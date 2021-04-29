@@ -2,7 +2,10 @@
 import React, {useState} from 'react';
 
 // React Native
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
+
+// Components
+import Fab from '../components/Fab';
 
 interface Props {}
 
@@ -12,20 +15,16 @@ const CounterScreen: React.FC<Props> = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Counter: {counter}</Text>
-      <TouchableOpacity
+      <Fab
+        title="-1"
         style={styles.fabLocationBL}
-        onPress={() => setCounter(counter - 1)}>
-        <View style={styles.fab}>
-          <Text style={styles.fabText}>-1</Text>
-        </View>
-      </TouchableOpacity>
-      <TouchableOpacity
+        onPress={() => setCounter(counter - 1)}
+      />
+      <Fab
+        title="+1"
         style={styles.fabLocationBR}
-        onPress={() => setCounter(counter + 1)}>
-        <View style={styles.fab}>
-          <Text style={styles.fabText}>+1</Text>
-        </View>
-      </TouchableOpacity>
+        onPress={() => setCounter(counter + 1)}
+      />
     </View>
   );
 };
@@ -51,20 +50,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 20,
     right: 20,
-  },
-  fab: {
-    backgroundColor: '#5856D6',
-    width: 60,
-    height: 60,
-    borderRadius: 100,
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  fabText: {
-    color: 'white',
-    fontSize: 20,
-    fontWeight: 'bold',
   },
 });
 
