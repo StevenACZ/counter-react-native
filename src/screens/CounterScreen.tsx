@@ -12,9 +12,18 @@ const CounterScreen: React.FC<Props> = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Counter: {counter}</Text>
-      <TouchableOpacity onPress={() => setCounter(counter + 1)}>
-        <View style={styles.button}>
-          <Text>+1</Text>
+      <TouchableOpacity
+        style={styles.fabLocationBL}
+        onPress={() => setCounter(counter - 1)}>
+        <View style={styles.fab}>
+          <Text style={styles.fabText}>-1</Text>
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.fabLocationBR}
+        onPress={() => setCounter(counter + 1)}>
+        <View style={styles.fab}>
+          <Text style={styles.fabText}>+1</Text>
         </View>
       </TouchableOpacity>
     </View>
@@ -23,6 +32,7 @@ const CounterScreen: React.FC<Props> = () => {
 
 const styles = StyleSheet.create({
   container: {
+    position: 'relative',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -32,9 +42,29 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 40,
   },
-  button: {
-    backgroundColor: 'red',
+  fabLocationBL: {
+    position: 'absolute',
+    bottom: 20,
+    left: 20,
+  },
+  fabLocationBR: {
+    position: 'absolute',
+    bottom: 20,
+    right: 20,
+  },
+  fab: {
+    backgroundColor: '#5856D6',
+    width: 60,
+    height: 60,
     borderRadius: 100,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  fabText: {
+    color: 'white',
+    fontSize: 20,
+    fontWeight: 'bold',
   },
 });
 
